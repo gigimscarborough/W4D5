@@ -8,22 +8,22 @@ end
 p anagram?("gizmo", "sally")    #=> false
 p anagram?("elvis", "lives")    #=> true
 
-# def permutations(array)  #O(n!)
-#     return [array] if array.length <= 1
+def permutations(array)  #O(n!) - factorial
+    return [array] if array.length <= 1
 
-#     first = array.shift
+    first = array.shift
 
-#     perms = permutations(array)
-#     total = []
+    perms = permutations(array) # recursive (n-1)- n! b/c factorial
+    total = []
 
-#     perms.each do |perm|
-#         (0..perm.length).each do |i|
-#             total << perm[0...i] + [first] + perm[i..-1]
-#         end
-#     end
+    perms.each do |perm|
+        (0..perm.length).each do |i|
+            total << perm[0...i] + [first] + perm[i..-1]
+        end
+    end
     
-#     total
-# end
+    total
+end
 
 # Write a method #second_anagram? that iterates over the first string. 
 # For each letter in the first string, find the index of that letter in 

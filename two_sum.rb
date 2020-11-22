@@ -1,3 +1,5 @@
+require 'byebug'
+
 def bad_two_sum?(arr, target_sum)
     pair_sums = []
 
@@ -42,9 +44,16 @@ okay_two_sum?(arr, 6) # => should be true
 okay_two_sum?(arr, 10) # => should be false
 
 def two_sum?(arr, target_sum)
-    
+    combos = {}
+
+    arr.each do |ele|
+        return true if combos[target_sum - ele]
+        combos[ele] = true
+    end
+
+    false
 end
 
 arr = [0, 1, 5, 7]
-okay_two_sum?(arr, 6) # => should be true
-okay_two_sum?(arr, 10) # => should be false
+p two_sum?(arr, 6) # => should be true
+p two_sum?(arr, 10) # => should be false

@@ -1,3 +1,5 @@
+require 'byebug'
+
 #O(n^2) quadratic time
 #O(1) constant space
 def bad_two_sum?(arr, target_sum)
@@ -58,14 +60,21 @@ end
 
 def two_sum_indices(arr, target_sum)
   complements = {}
+  
   arr.each_with_index do |el, i|
+    debugger
     complement, j = complements[target_sum - el] # these will both be nil if the complement doesn't exist
     return [i, j] if complement
 
     complements[el] = [el, i]
+    debugger
   end
   nil
 end
+
+arr = [0, 1, 5, 7]
+p two_sum_indices(arr, 6) # => should be true
+p two_sum_indices(arr, 10) # => should be false
 
 # O(n^2) time complexity
 # O(n^2) space complexity
